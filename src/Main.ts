@@ -124,32 +124,31 @@ class Main extends egret.DisplayObjectContainer {
         sky.width = stageW;
         sky.height = stageH;
 
+       //框框
         var topMask = new egret.Shape();
         topMask.graphics.beginFill(0x000000, 0.5);
         topMask.graphics.drawRect(0, 0, stageW, 172);
         topMask.graphics.endFill();
+        var topMask2 = new egret.Shape();
+        topMask2.graphics.beginFill(0x000000, 0.5);
+        topMask2.graphics.drawRect(60, 0, 30, 1136);
+        topMask2.graphics.endFill();
         topMask.y = 33;
+        topMask2.y = 33;
         this.addChild(topMask);
+        this.addChild(topMask2);
 
-        var icon:egret.Bitmap = this.createBitmapByName("");
+        var icon:egret.Bitmap = this.createBitmapByName("egret_icon_png");
         this.addChild(icon);
-        icon.x = 26;
+        icon.x = 102;
         icon.y = 33;
-
-        var tween = egret.Tween.get(icon);
-        tween.to({x:100},2000).to({y:200},2000).call(function(){
-          //  alert('hhhh')
-        },this).to({x:26,y:33},1000)
-
-      //  icon.touchEnabled = true;
-      //  icon.addEventListener(egret.TouchEvent.TOUCH_BEGIN,())
 
         var line = new egret.Shape();
         line.graphics.lineStyle(2,0xffffff);
-        line.graphics.moveTo(0,0);//线偏移
-        line.graphics.lineTo(0,117);
+        line.graphics.moveTo(0,0);//左偏
+        line.graphics.lineTo(0,117);//右偏
         line.graphics.endFill();
-        line.x = 172;
+        line.x = 232;
         line.y = 61;
         this.addChild(line);
 
@@ -159,7 +158,7 @@ class Main extends egret.DisplayObjectContainer {
         colorLabel.width = stageW - 172;
         colorLabel.textAlign = "center";
         colorLabel.text = "个人简介";
-        colorLabel.size = 24;
+        colorLabel.size = 40;
         colorLabel.x = 172;
         colorLabel.y = 80;
         this.addChild(colorLabel);
@@ -169,7 +168,7 @@ class Main extends egret.DisplayObjectContainer {
         textfield.alpha = 0;
         textfield.width = stageW - 172;
         textfield.textAlign = egret.HorizontalAlign.CENTER;
-        textfield.size = 24;
+        textfield.size = 30;
         textfield.textColor = 0xffffff;
         textfield.x = 172;
         textfield.y = 135;
@@ -216,10 +215,9 @@ class Main extends egret.DisplayObjectContainer {
             self.changeDescription(textfield, lineArr);
 
             var tw = egret.Tween.get(textfield);
-            
-            tw.to({"alpha": 1}, 200);
+            tw.to({"alpha": 1}, 400);
             tw.wait(2000);
-            tw.to({"alpha": 0}, 200);
+            tw.to({"alpha": 0}, 400);
             tw.call(change, self);
         };
 
