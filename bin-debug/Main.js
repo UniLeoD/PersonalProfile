@@ -101,55 +101,185 @@ var Main = (function (_super) {
      * Create a game scene
      */
     p.createGameScene = function () {
+        var Ps = new egret.DisplayObjectContainer();
+        var FP = new egret.DisplayObjectContainer();
+        var SP = new egret.DisplayObjectContainer();
+        this.addChild(Ps);
+        Ps.addChild(FP);
+        Ps.addChild(SP);
+        SP.y = 1136;
         var sky = this.createBitmapByName("FP_JPG");
-        this.addChild(sky);
+        FP.addChild(sky);
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
         sky.width = stageW;
         sky.height = stageH;
+        //框框
         var topMask = new egret.Shape();
-        topMask.graphics.beginFill(0x000000, 0.5);
+        topMask.graphics.beginFill(0x000000, 0.3);
         topMask.graphics.drawRect(0, 0, stageW, 172);
         topMask.graphics.endFill();
+        var topMask2 = new egret.Shape();
+        topMask2.graphics.beginFill(0x000000, 0.6);
+        topMask2.graphics.drawRect(60, 0, 30, 1136);
+        topMask2.graphics.endFill();
         topMask.y = 33;
-        this.addChild(topMask);
-        var icon = this.createBitmapByName("");
-        this.addChild(icon);
-        icon.x = 26;
+        topMask2.y = 33;
+        FP.addChild(topMask);
+        FP.addChild(topMask2);
+        var icon = this.createBitmapByName("egret_icon_png");
+        FP.addChild(icon);
+        icon.x = 102;
         icon.y = 33;
-        var tween = egret.Tween.get(icon);
-        tween.to({ x: 100 }, 2000).to({ y: 200 }, 2000).call(function () {
-            //  alert('hhhh')
-        }, this).to({ x: 26, y: 33 }, 1000);
-        //  icon.touchEnabled = true;
-        //  icon.addEventListener(egret.TouchEvent.TOUCH_BEGIN,())
         var line = new egret.Shape();
         line.graphics.lineStyle(2, 0xffffff);
-        line.graphics.moveTo(0, 0); //线偏移
-        line.graphics.lineTo(0, 117);
+        line.graphics.moveTo(0, 0); //左偏
+        line.graphics.lineTo(0, 117); //右偏
         line.graphics.endFill();
-        line.x = 172;
+        line.x = 232;
         line.y = 61;
-        this.addChild(line);
+        FP.addChild(line);
+        var tween = egret.Tween.get(icon);
+        tween.to({ x: 500 }, 2500).to({ y: 400 }, 3000).call(function () {
+            //  alert('hhhh')
+        }, this).to({ x: 102, y: 400 }, 2500);
+        tween.to({ y: 33 }, 3000);
+        //  icon.touchEnabled = true;
+        //  icon.addEventListener(egret.TouchEvent.TOUCH_BEGIN,())
         var colorLabel = new egret.TextField();
         colorLabel.textColor = 0xffffff;
         colorLabel.width = stageW - 172;
         colorLabel.textAlign = "center";
         colorLabel.text = "个人简介";
-        colorLabel.size = 24;
+        colorLabel.fontFamily = "SimHei";
+        //设置粗体与斜体
+        colorLabel.bold = true;
+        colorLabel.size = 40;
         colorLabel.x = 172;
         colorLabel.y = 80;
-        this.addChild(colorLabel);
+        FP.addChild(colorLabel);
         var textfield = new egret.TextField();
-        this.addChild(textfield);
         textfield.alpha = 0;
         textfield.width = stageW - 172;
+        textfield.fontFamily = "KaiTi";
         textfield.textAlign = egret.HorizontalAlign.CENTER;
-        textfield.size = 24;
+        textfield.verticalAlign = egret.VerticalAlign.MIDDLE;
+        //设置描边属性
+        textfield.strokeColor = 0x7a7a7a;
+        textfield.stroke = 2;
+        textfield.size = 30;
         textfield.textColor = 0xffffff;
-        textfield.x = 172;
+        textfield.x = 174;
         textfield.y = 135;
         this.textfield = textfield;
+        FP.addChild(textfield);
+        var sky2 = this.createBitmapByName("SP_JPG");
+        SP.addChild(sky2);
+        var stageW = this.stage.stageWidth;
+        var stageH = this.stage.stageHeight;
+        sky2.width = stageW;
+        sky2.height = stageH;
+        var topMask3 = new egret.Shape();
+        topMask3.graphics.beginFill(0xffffff, 0.6);
+        topMask3.graphics.drawRect(0, 0, stageW, 350);
+        topMask3.graphics.endFill();
+        var topMask4 = new egret.Shape();
+        topMask4.graphics.beginFill(0xffffff, 0.2);
+        topMask4.graphics.drawRect(550, 0, 30, 1136);
+        topMask4.graphics.endFill();
+        topMask3.y = 80;
+        topMask4.y = 80;
+        SP.addChild(topMask3);
+        SP.addChild(topMask4);
+        var colorLabel21 = new egret.TextField();
+        colorLabel21.textColor = 0x000000;
+        colorLabel21.width = stageW - 172;
+        colorLabel21.textAlign = "center";
+        colorLabel21.text = "关于我";
+        colorLabel21.fontFamily = "SimHei";
+        //设置粗体与斜体
+        colorLabel21.bold = true;
+        colorLabel21.size = 30;
+        colorLabel21.x = 240;
+        colorLabel21.y = 92;
+        SP.addChild(colorLabel21);
+        var textfield21 = new egret.TextField();
+        textfield21.text = "喜欢音乐、喜欢艺术、喜欢历史...";
+        textfield21.width = stageW - 172;
+        textfield21.fontFamily = "KaiTi";
+        textfield21.size = 25;
+        textfield21.textColor = 0x000000;
+        textfield21.x = 190;
+        textfield21.y = 135;
+        SP.addChild(textfield21);
+        var textfield22 = new egret.TextField();
+        textfield22.text = "喜欢自然、喜欢美食、喜欢美的东西...";
+        textfield22.width = stageW - 172;
+        textfield22.fontFamily = "KaiTi";
+        textfield22.size = 25;
+        textfield22.textColor = 0x000000;
+        textfield22.x = 140;
+        textfield22.y = 160;
+        SP.addChild(textfield22);
+        var colorLabel22 = new egret.TextField();
+        colorLabel22.textColor = 0x000000;
+        colorLabel22.width = stageW - 172;
+        colorLabel22.textAlign = "center";
+        colorLabel22.text = "我学过的";
+        colorLabel22.fontFamily = "SimHei";
+        //设置粗体与斜体
+        colorLabel22.bold = true;
+        colorLabel22.size = 30;
+        colorLabel22.x = 224;
+        colorLabel22.y = 250;
+        SP.addChild(colorLabel22);
+        var textfield23 = new egret.TextField();
+        textfield23.text = "PS、InDesign、CorelDRAW、Pr、会声会影、GoldWave、Nuendo、iebook、Flash...";
+        textfield23.width = stageW - 172;
+        textfield23.fontFamily = "KaiTi";
+        textfield23.size = 25;
+        textfield23.textColor = 0x000000;
+        textfield23.x = 70;
+        textfield23.y = 293;
+        //设置右靠齐
+        textfield23.textAlign = egret.HorizontalAlign.RIGHT;
+        SP.addChild(textfield23);
+        var textfield24 = new egret.TextField();
+        textfield24.text = "3DsMax、Unity...";
+        textfield24.width = stageW - 172;
+        textfield24.fontFamily = "KaiTi";
+        textfield24.size = 25;
+        textfield24.textColor = 0x000000;
+        textfield24.x = 70;
+        textfield24.y = 343;
+        textfield24.textAlign = egret.HorizontalAlign.RIGHT;
+        SP.addChild(textfield24);
+        var textfield25 = new egret.TextField();
+        textfield25.text = "C语言、C++、Java、HTML...";
+        textfield25.width = stageW - 172;
+        textfield25.fontFamily = "KaiTi";
+        textfield25.size = 25;
+        textfield25.textColor = 0x000000;
+        textfield25.x = 70;
+        textfield25.y = 368;
+        textfield25.textAlign = egret.HorizontalAlign.RIGHT;
+        SP.addChild(textfield25);
+        var OffsetY;
+        var Y;
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN, BeginTurn, this);
+        function BeginTurn(eTE) {
+            Y = eTE.stageY;
+        }
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_END, EndTurn, this);
+        function EndTurn(eTE) {
+            OffsetY = Y - eTE.stageY;
+            if (OffsetY > 100) {
+                egret.Tween.get(SP).to({ y: 0 }, 500, egret.Ease.backOut);
+            }
+            else if (OffsetY < -100) {
+                egret.Tween.get(SP).to({ y: 1136 }, 500, egret.Ease.backOut);
+            }
+        }
         //根据name关键字，异步获取一个json配置文件，name属性请参考resources/resource.json配置文件的内容。
         // Get asynchronously a json configuration file according to name keyword. As for the property of name please refer to the configuration file of resources/resource.json.
         RES.getResAsync("description_json", this.startAnimation, this);
@@ -185,9 +315,9 @@ var Main = (function (_super) {
             var lineArr = textflowArr[count];
             self.changeDescription(textfield, lineArr);
             var tw = egret.Tween.get(textfield);
-            tw.to({ "alpha": 1 }, 200);
+            tw.to({ "alpha": 1 }, 400);
             tw.wait(2000);
-            tw.to({ "alpha": 0 }, 200);
+            tw.to({ "alpha": 0 }, 400);
             tw.call(change, self);
         };
         change();

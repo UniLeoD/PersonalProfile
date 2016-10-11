@@ -163,14 +163,15 @@ class Main extends egret.DisplayObjectContainer {
         FP.addChild(line);
 
 
-     /*   var tween = egret.Tween.get(icon);
-        tween.to({x:100},2000).to({y:200},2000).call(function(){
+        var tween = egret.Tween.get(icon);
+        tween.to({x:500},2500).to({y:400},3000).call(function(){
           //  alert('hhhh')
-        },this).to({x:26,y:33},1000)
+        },this).to({x:102,y:400},2500)
+        tween.to({y:33},3000)
 
       //  icon.touchEnabled = true;
       //  icon.addEventListener(egret.TouchEvent.TOUCH_BEGIN,())
-     */
+     
 
         var colorLabel = new egret.TextField();
         colorLabel.textColor = 0xffffff;
@@ -295,6 +296,7 @@ class Main extends egret.DisplayObjectContainer {
         textfield25.y = 368;
         textfield25.textAlign = egret.HorizontalAlign.RIGHT;
         SP.addChild(textfield25);
+
 
         var OffsetY:number;
         var Y:number;
