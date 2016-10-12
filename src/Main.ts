@@ -298,7 +298,7 @@ class Main extends egret.DisplayObjectContainer {
         SP.addChild(textfield25);
 
 
-        var OffsetY:number;
+        var OffsetY:number;//不在乎触发事件元素的定位属性
         var Y:number;
         this.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN,BeginTurn,this);
         function BeginTurn(eTE:egret.TouchEvent):void{
