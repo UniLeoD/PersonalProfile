@@ -308,9 +308,9 @@ class Main extends egret.DisplayObjectContainer {
         function EndTurn(eTE:egret.TouchEvent):void{
             OffsetY = Y - eTE.stageY;
             if(OffsetY > 100){
-                egret.Tween.get(SP).to({ y: 0 }, 500, egret.Ease.backOut);
+                egret.Tween.get(SP).to({ y: 0 }, 500, egret.Ease.sineIn);
             }else if(OffsetY < -100){
-                 egret.Tween.get(SP).to({ y: 1136 }, 500, egret.Ease.backOut);
+                 egret.Tween.get(SP).to({ y: 1136 }, 500, egret.Ease.sineIn);
             }
         }
         
