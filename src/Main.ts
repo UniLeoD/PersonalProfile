@@ -310,7 +310,7 @@ class Main extends egret.DisplayObjectContainer {
             if(OffsetY > 100){
                 egret.Tween.get(SP).to({ y: 0 }, 500, egret.Ease.sineIn);//缓动动画集合中选用sineIn
             }else if(OffsetY < -100){
-                 egret.Tween.get(SP).to({ y: 1136 }, 500, egret.Ease.sineIn);
+                 egret.Tween.get(SP).to({ y: 1136 }, 500, egret.Ease.sineIn);//BUThowto加alpha让翻到某页时另一页渐渐透明呢呜呜
             }
         }
         
